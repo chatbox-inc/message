@@ -29,7 +29,9 @@ module.exports = function(){
     this.watch([
         './contents/**/*','./templates/**/*'
     ], function(){
-        browserSync.reload();
+        setTimeout(function(){
+            browserSync.reload();
+        },500);
     });
 }
 
