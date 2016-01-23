@@ -1,9 +1,3 @@
-server:
-	./node_modules/.bin/gulp wintersmith
-server2:
-	php -S localhost:4040 -t public
-dev:
-	npm run dev
 builds:
 	wintersmith build --clean
 	gulp sitemap
