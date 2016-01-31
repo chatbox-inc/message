@@ -1,4 +1,11 @@
 {
+    "name": "chatbox-inc/lumen-template",
+    "authors": [
+        {
+            "name": "mikakane",
+            "email": "mikakane2@gmail.com"
+        }
+    ],	
     "require": {
         "laravel/lumen-framework": "5.2.*",
         "vlucas/phpdotenv": "~2.2"
