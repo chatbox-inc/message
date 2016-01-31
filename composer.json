@@ -12,6 +12,8 @@
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
-        "phpunit/phpunit": "~4.0"
+        "phpunit/phpunit": "~4.0",
+        "psy/psysh": "@stable",
+        "barryvdh/laravel-ide-helper": "@stable"
     }
 }

@@ -16,3 +16,12 @@ compsoerを利用してファイルを取ってくる
 ````
 $ composer require chatbox/lumen-template:dev-master
 ````
+
+主要なファイル等は`lumen new {siteName}`コマンドを使用してひっぱり、
+適宜、再配置してください。
+
+## include
+
+- lumen 
+- psysh http://psysh.org/#install
+- ide-helper http://qiita.com/mikakane/items/f763bb5738886cc532fe
