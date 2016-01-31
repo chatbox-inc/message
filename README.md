@@ -18,7 +18,7 @@ $ composer require chatbox/lumen-template:dev-master
 ````
 
 主要なファイル等は`lumen new {siteName}`コマンドを使用してひっぱり、
-適宜、再配置してください。
+適宜、再配置してください。mkd
 
 ## include
 
