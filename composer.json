@@ -8,12 +8,12 @@
     ],	
     "require": {
         "laravel/lumen-framework": "5.2.*",
-        "vlucas/phpdotenv": "~2.2",
-        "barryvdh/laravel-ide-helper": "@stable"
+        "vlucas/phpdotenv": "~2.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "phpunit/phpunit": "~4.0",
-        "psy/psysh": "@stable"
+        "psy/psysh": "@stable",
+        "barryvdh/laravel-ide-helper": "@stable"
     }
 }
