@@ -1,11 +1,12 @@
 {
     "name": "chatbox-inc/lumen",
+    "type":"package",
     "authors": [
         {
             "name": "mikakane",
             "email": "mikakane2@gmail.com"
         }
-    ],	
+    ],
     "require": {
         "laravel/lumen-framework": "5.2.*",
         "vlucas/phpdotenv": "~2.2"
@@ -14,6 +15,9 @@
         "fzaninotto/faker": "~1.4",
         "phpunit/phpunit": "~4.0",
         "psy/psysh": "@stable",
-        "barryvdh/laravel-ide-helper": "@stable"
+        "barryvdh/laravel-ide-helper": "@stable",
+        "laravel/homestead": "^3.0"
+    },
+    "scripts":{
     }
 }
