@@ -1,22 +1,19 @@
 <?php
 
-namespace App\Exceptions;
+namespace App;
 
-use Chatbox\Begonia\Http\Response\JsonResponseTrait;
 use Exception;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\ResponseTrait;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
 
-class Handler extends ExceptionHandler
-{
-    use JsonResponseTrait;
+use App\Http\Response\JsonResponseFactoryInterface;
 
-    use ApiExceptionHandlerTrait;
+
+class ApiExceptionHandler extends ExceptionHandler
+{
     /**
      * A list of the exception types that should not be reported.
      *
@@ -51,7 +48,8 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        $res = $this->getResponse([],500);
-        return $this->handleError($e,$res);
+        /** @var JsonResponseFactoryInterface $resFactory */
+        $resFactory = app(JsonResponseFactoryInterface::class);
+        return $resFactory->createFromError($e);
     }
 }

@@ -5,15 +5,18 @@
  * Date: 2016/01/31
  * Time: 19:08
  */
-
-namespace App\Exceptions;
-
+namespace App\Http\Response;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\ResponseTrait;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 use Exception;
+
+/**
+ * 例外をResponseに変換する仕組み
+ * @package App\Exceptions
+ */
 trait ApiExceptionHandlerTrait
 {
     protected function handleError(Exception $e,JsonResponse $res){

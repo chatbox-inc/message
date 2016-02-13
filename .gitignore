@@ -1,3 +1,6 @@
 /vendor
 composer.lock
 backend/storage/*
+Homestead.yaml
+.vagrant
+.env
