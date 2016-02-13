@@ -1,0 +1,50 @@
+/**
+ * よく使う系のをまとめて
+ */
+@mixin commons(){
+  body{
+    font-family: Helvetica , "游ゴシック" , "Yu Gothic" , sans-serif;
+  }
+
+}
+
+
+@mixin section(){
+  padding: 3em 0;
+  text-align: center;
+}
+
+@mixin iconBox($mainColor,$bgColor,$heading:gray){
+  margin: 0 .2em;
+  padding: 2em 1em;
+  margin-bottom: 2em;
+  border: 1px solid $mainColor;
+  border-radius: 2px;
+  i{
+    display: inline-block;
+    font-size: 2em;
+    line-height: 2em;
+    vertical-align: middle;
+    width: 2em;
+    height: 2em;
+    color: $bgColor;
+    background-color: $mainColor;
+    border-radius: 1em;
+  }
+  h3{
+    color: $heading;
+  }
+  p{
+    font-size: 85%;
+    text-align: left;
+  }
+}
+
+@mixin twoBoxContainer(){
+  .container{
+    .col-md-6{
+      margin-bottom:4em;
+    }
+  }
+
+}

@@ -1,0 +1,23 @@
+// see whole variable in bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
+
+$icon-font-path: "/lib/bootstrap/fonts/";
+
+$font-size-base: 18px;
+$font-size-h1:            floor(($font-size-base * 2)) !default; // ~36px
+$font-size-h2:            floor(($font-size-base * 1.5)) !default; // ~30px
+$font-size-h3:            ceil(($font-size-base * 1.3)) !default; // ~24px
+$font-size-h4:            ceil(($font-size-base * 1)) !default; // ~18px
+$font-size-h5:            $font-size-base !default;
+$font-size-h6:            ceil(($font-size-base * 0.85)) !default; // ~12px
+
+$grid-gutter-width:         30px !default;
+//$container-desktop:            (720px + $grid-gutter-width) !default;
+//$container-md:                 $container-desktop !default;
+$container-large-desktop:      (940px + $grid-gutter-width) !default;
+$container-lg:                 $container-large-desktop !default;
+
+$btn-default-bg: transparent;
+$btn-default-color: inherit;
+
+// custom variable
+$themeColor: rgb(195, 13, 35);
