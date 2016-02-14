@@ -1,6 +1,7 @@
 /vendor
-composer.lock
-backend/storage/*
-Homestead.yaml
-.vagrant
-.env
+/composer.lock
+/backend/storage/*
+/Homestead.yaml
+/.vagrant
+/.env
+/node_modules

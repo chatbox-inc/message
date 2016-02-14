@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Console\Scheduling\Schedule;
 use Laravel\Lumen\Console\Kernel as ConsoleKernel;
 
-class Kernel extends ConsoleKernel
+class AppConsoleKernel extends ConsoleKernel
 {
     /**
      * The Artisan commands provided by your application.
