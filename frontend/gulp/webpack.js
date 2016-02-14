@@ -1,39 +1,26 @@
 "use strict"
-var webpack = require("webpack")
+var webpack = require("gulp-webpack")
+var setting = require("./_setting")
 
 module.exports = function(){
-
-    var compiler = webpack({
-        "entry": {
-            "common":"./script/app.js"
-        },
-        "output": {
-            "filename": "./contents/assets/js/[name].bundle.js"
-        },
-        module: {
-            loaders: [
-                { test: /\.js/, loader: "es6" },
-                { test: /\.html/, loader: "html" }
-            ]
-        },
-        resolve: {
-            extensions:["",".js"]
-        }
-    });
-
-    console.log(compiler)
-
-    compiler.run(function(err, stats) {
-        console.log("hogehogemi",err);
-    });
-
-    compiler.watch({ // watch options:
-        aggregateTimeout: 300, // wait so long for more changes
-        poll: gulpfile.js // use polling instead of native watchers
-        // pass a number to set the polling interval
-    }, function(err, stats) {
-        console.log("hogehogemipiyoyo",err);
-        // ...
-    });
+    this.src([`${setting.js.src}/**/*.js`])
+        .pipe(webpack({
+            "entry": {
+                "common": `${setting.js.src}common.js`
+            },
+            "output": {
+                "filename": `[name].bundle.js`
+            },
+            module: {
+                loaders: [
+                    { test: /\.js/,exclude: /node_modules/, loader: "babel" },
+                    { test: /\.html/, loader: "html" }
+                ]
+            },
+            resolve: {
+                extensions:["",".js"]
+            }
+        }))
+        .pipe(this.dest(`${setting.js.dist}`))
 }
 
