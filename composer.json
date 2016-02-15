@@ -12,6 +12,11 @@
             "App\\":"./backend/app"
         }
     },
+    "autoload-dev":{
+        "classmap":[
+            "./backend/tests/"
+        ]
+    },
     "require": {
         "laravel/lumen-framework": "5.2.*",
         "vlucas/phpdotenv": "~2.2"
