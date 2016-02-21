@@ -2,6 +2,7 @@
 
 ````
 $ composer create-project chatbox-inc/lumen myProject dev-master
+$ cp .env.example .env
 ````
 
 ## include
@@ -10,6 +11,13 @@ $ composer create-project chatbox-inc/lumen myProject dev-master
 - psysh http://psysh.org/#install
 - ide-helper http://qiita.com/mikakane/items/f763bb5738886cc532fe
 - homestead 
+
+## homestead
+
+````
+$ vendor/bin/homestead make
+$ vagrant up
+````
 
 ## インストール後
 
