@@ -1,5 +1,7 @@
 # lumen プロジェクト構築用スケルトン
 
+[![Packagist](https://img.shields.io/packagist/v/symfony/symfony.svg?style=flat-square)]()
+
 ````
 $ composer create-project chatbox-inc/lumen myProject dev-master
 $ cp .env.example .env
