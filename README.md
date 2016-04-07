@@ -1,6 +1,7 @@
 # lumen プロジェクト構築用スケルトン
 
-[![Packagist](https://img.shields.io/packagist/vpre/chatbox-inc/lumen.svg?style=flat-square)](https://packagist.org/packages/chatbox-inc/lumen)
+[![Packagist Pre Release](https://img.shields.io/packagist/vpre/chatbox-inc/lumen.svg?style=flat-square)](https://packagist.org/packages/chatbox-inc/lumen)
+[![Packagist ](https://img.shields.io/packagist/vpre/chatbox-inc/lumen.svg?style=flat-square)]()
 
 ````
 $ composer create-project chatbox-inc/lumen myProject dev-master
