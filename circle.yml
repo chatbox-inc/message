@@ -6,7 +6,7 @@ machine:
 
 database:
   override:
-    - "php artisan migrate -f"
+    - "php artisan migrate --force"
 
 test:
   override:
