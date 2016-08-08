@@ -21,7 +21,7 @@
     "scripts":{
         "post-update-cmd": [
             "touch .env",
-            "touch backend/database/database.sqlite"
+            "touch backend/app/database/database.sqlite"
         ],
         "post-package-install": [],
         "post-install-cmd": [],
