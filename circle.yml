@@ -4,14 +4,10 @@ machine:
   environment:
     DB_CONNECTION: sqlite
 
-#dependencies:
-#  override:
-#    - composer install --prefer-source --no-interaction --dev
-#    - docker-compose up -d
-
 database:
   override:
-    - "php artisan migrate -n"
+    - "php artisan migrate -f"
+
 test:
   override:
     - make test
