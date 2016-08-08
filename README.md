@@ -1,5 +1,7 @@
 # メッセージ管理
 
+[![CircleCI](https://circleci.com/gh/chatbox-inc/message.svg?style=svg)](https://circleci.com/gh/chatbox-inc/message)
+
 APIドキュメントはこちら
 
 http://editor.swagger.io/#/?import=https://raw.githubusercontent.com/chatbox-inc/message/master/doc/swagger.yml
