@@ -11,7 +11,7 @@ machine:
 
 database:
   override:
-    - php artisan migrate
+    - y | php artisan migrate
 test:
   override:
     - make test
