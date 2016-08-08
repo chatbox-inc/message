@@ -2,20 +2,14 @@ machine:
   php:
     version: 7.0.4
 
-dependencies:
-  override:
-    - composer install --prefer-source --no-interaction --dev
-    - docker-compose up -d
+#dependencies:
+#  override:
+#    - composer install --prefer-source --no-interaction --dev
+#    - docker-compose up -d
 
+database:
+  override:
+    - php artisan migrate
 test:
-  pre:
-    - cp .env.example .env
-    - docker-compose run web php artisan key:generate
-    - docker-compose run web php artisan migrate
-    - docker-compose run web php artisan db:seed
-    - docker-compose run web php artisan db:seed --class DemoSeeder
-    - sudo chmod -R a+w storage
-
   override:
-    - docker-compose run -e DB_HOST=db_app_test web ./vendor/bin/phpunit
-    - docker-compose run web ./vendor/bin/codecept run -c codeception/codeception.yml
+    - make test
