@@ -19,12 +19,12 @@
 
     },
     "scripts":{
-        "post-update-cmd": [],
-        "post-package-install": [],
-        "post-install-cmd": [
-            "cp .env.example .env",
+        "post-update-cmd": [
+            "touch .env",
             "touch backend/database/database.sqlite"
         ],
+        "post-package-install": [],
+        "post-install-cmd": [],
         "post-autoload-dump": [],
         "post-create-project-cmd": []
     },
