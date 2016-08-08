@@ -21,11 +21,15 @@
     "scripts":{
         "post-update-cmd": [],
         "post-package-install": [],
-        "post-install-cmd": [],
+        "post-install-cmd": [
+            "cp .env.example .env",
+            "touch backend/database/database.sqlite"
+        ],
         "post-autoload-dump": [],
         "post-create-project-cmd": []
     },
     "require": {
+        "chatbox-inc/lumen-providers": "dev-master"
     },
     "require-dev": {
         "laravel/lumen": "^5.2",
