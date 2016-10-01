@@ -6,11 +6,13 @@ APIドキュメントはこちら
 
 http://editor.swagger.io/#/?import=https://raw.githubusercontent.com/chatbox-inc/message/master/doc/swagger.yml
 
-意思決定の注入は考えない、純粋なアプリケーションとして実装
+意思決定の注入を行わない、純粋なアプリケーションとして実装
 
-## API 仕様
+## 機能
 
-エントリは message . ルートは個別に設定可能。
+問い合わせメッセージ送信のためのシンプルなAPI構成を整える。
+
+エントリは message. ルートは個別に設定可能。
 
 ## メッセージのフォーマット
 
@@ -31,22 +33,6 @@ from to をユーザIDにしてSMS活用
 
 to をbox_idにしてBOX MESSAGE活用など
 
-## 利用方法
+## Usage
 
-MessageServiceInterface を注入する
-
-
-
-テーブル構成
-
-id 
-heade
-
-
-## issue
-
-- [x] 基本ライブラリ作成
-- [x] Sample作成  
-− [x] 基礎テスト作成  
-− [x] APIドキュメント生成  
-− [ ] パッケージ公開  
+ServiceProvider 及び backendsフォルダを参照

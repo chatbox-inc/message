@@ -33,11 +33,6 @@ $app->singleton(
     \Illuminate\Contracts\Console\Kernel::class,
     function()use($app){
         return new class($app) extends Kernel{
-           /**
-            * The Artisan commands provided by your application.
-            *
-            * @var array
-            */
            public $commands = [
            ];
            /**
