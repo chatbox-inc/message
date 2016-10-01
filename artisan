@@ -27,8 +27,32 @@ $app = require __DIR__.'/backend/bootstrap.php';
 | or another output device for the developers. Here goes nothing!
 |
 */
+$app->singleton(
+    \Illuminate\Contracts\Console\Kernel::class,
+    function(){
+        return new class($this->app) extends Kernel{
+           /**
+            * The Artisan commands provided by your application.
+            *
+            * @var array
+            */
+           public $commands = [
+           ];
+           /**
+            * Define the application's command schedule.
+            *
+            * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+            * @return void
+            */
+           protected function schedule(Schedule $schedule)
+           {
+               //
+           }
+        };
+    }
+);
 
-$app->register(\Chatbox\Lumen\Providers\ArtisanServiceProvider::class);
+
 
 $app->extend(\Illuminate\Contracts\Console\Kernel::class,function($console){
     $console->addCommands([
