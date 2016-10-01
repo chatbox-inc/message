@@ -22,9 +22,13 @@ $app->singleton(\Illuminate\Contracts\Debug\ExceptionHandler::class,function(){
     return $handler;
 });
 
-$app->register(\Chatbox\RestApp\RestApiServiceProvider::class);
+$app->register(\Chatbox\Message\MessageServiceProvider::class);
 
-$app->register(\Chatbox\RestApp\Message2ServiceProvider::class);
-$app->register(\Chatbox\RestApp\Message1ServiceProvider::class);
+app("db")->listen(function(\Illuminate\Database\Events\QueryExecuted $e) {
+    /** @var \Psr\Log\LoggerInterface $log */
+    $log = app(\Psr\Log\LoggerInterface::class);
+    $log->debug($e->sql);
+    $log->debug("bindings",$e->bindings);
+});
 
 return $app;

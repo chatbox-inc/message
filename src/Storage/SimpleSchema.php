@@ -19,6 +19,7 @@ trait SimpleSchema
             $blueprint->string("code")->unique();
             $blueprint->string("from");
             $blueprint->string("to");
+            $blueprint->string("subject");
             $blueprint->text("body");
             $blueprint->timestamps();
         });

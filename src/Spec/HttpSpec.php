@@ -4,6 +4,7 @@ use Chatbox\Message\MessageInterface;
 use Chatbox\Message\MessageNotFoundException;
 use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
+use Laravel\Lumen\Testing\Concerns\MakesHttpRequests;
 
 /**
  * Created by PhpStorm.
@@ -13,72 +14,75 @@ use Illuminate\Validation\ValidationException;
  */
 class HttpSpec
 {
-    use ResponseSpec;
+    use MakesHttpRequests;
 
-    protected $lumen;
+    protected $app;
 
     protected $entry;
+
+    protected $baseUrl = 'http://localhost:8080';
 
     /**
      * HttpSpec constructor.
      * @param $lumen
      */
-    public function __construct($lumen,$entry="message")
+    public function __construct($lumen)
     {
-        $this->entry = $entry;
-        $this->lumen = $lumen;
+        $this->app = $lumen;
     }
 
     /**
      * @return Response;
      */
     public function response(){
-        $response = $this->lumen->response();
+        $response = $this->response;
         return $response;
     }
 
-    public function get($token){
-        $this->lumen->get($this->entry."/$token");
+    public function callGet($token){
+        $this->get("/message/$token");
         return $this;
     }
 
-    public function post($message){
-        $this->lumen->post($this->entry,[
+    public function callPost($message){
+        $this->post("/message/",[
             "message" => $message
         ]);
         return $this;
     }
 
-    public function put($token,$message){
-        $this->lumen->put($this->entry."/$token",[
+    public function callPut($token,$message){
+        $this->put("/message/$token",[
             "message" => $message
         ]);
         return $this;
     }
 
-    public function delete($token){
-        $this->lumen->delete($this->entry."/$token");
+    public function callDelete($token){
+        $this->delete("/message/$token");
         return $this;
     }
 
-    public function getUid(){
+    protected function getUid(){
         $body = $this->response()->getOriginalContent();
         return array_get($body,"uid");
     }
 
-    public function getMessage(){
+    protected function getMessage(){
         $body = $this->response()->getOriginalContent();
         return array_get($body,"message");
     }
 
-    public function assertResponseHasUid(){
+    public function assertResponseHasUid():string{
         $uid = $this->getUid();
         assert(is_string($uid));
+        return $uid;
     }
 
-    public function assertResponseHasMessage(){
+    public function assertResponseHasMessage():MessageInterface{
         $message = $this->getMessage();
         assert($message instanceof MessageInterface);
+        return $message;
     }
 
     public function assertResponseHasNotFoundException(){
@@ -91,9 +95,8 @@ class HttpSpec
         assert($e instanceof ValidationException);
     }
 
-
-
-
-
+    public function isOk(){
+        assert($this->response()->getStatusCode() === 200);
+    }
 
 }

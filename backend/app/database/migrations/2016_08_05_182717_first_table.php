@@ -13,8 +13,7 @@ class FirstTable extends Migration
     public function up()
     {
         $schema = \Illuminate\Support\Facades\Schema::getFacadeRoot();
-        (new \Chatbox\RestApp\Message1())->up($schema);
-        (new \Chatbox\RestApp\Message2())->up($schema);
+        (new \Chatbox\Message\Storage\Eloquent\MessageService())->up($schema);
     }
 
     /**
@@ -25,7 +24,6 @@ class FirstTable extends Migration
     public function down()
     {
         $schema = \Illuminate\Support\Facades\Schema::getFacadeRoot();
-        (new \Chatbox\RestApp\Message1())->down($schema);
-        (new \Chatbox\RestApp\Message2())->down($schema);
+        (new \Chatbox\Message\Storage\Eloquent\MessageService())->down($schema);
     }
 }

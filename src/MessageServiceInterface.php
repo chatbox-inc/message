@@ -17,15 +17,10 @@ interface MessageServiceInterface
 
     /**
      * メッセージの取得
+     * @throws MessageNotFoundException
      * @return mixed
      */
     public function find($_uid):MessageInterface;
-
-    /**
-     * メッセージの検索
-     * @return mixed
-     */
-    public function fetch(array &$conj):array;
 
     /**
      * メッセージの発行
@@ -35,6 +30,7 @@ interface MessageServiceInterface
 
     /**
      * メッセージの更新
+     * @throws MessageNotFoundException
      * @return mixed
      */
     public function rewrite($_uid,array $message);
@@ -43,7 +39,7 @@ interface MessageServiceInterface
      * メッセージの削除
      * @return mixed
      */
-    public function remove(array $conj);
+    public function remove($uid);
 }
 
 class MessageServiceException extends \Exception{}

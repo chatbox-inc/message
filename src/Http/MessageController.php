@@ -1,5 +1,6 @@
 <?php
 namespace Chatbox\Message\Http;
+use Chatbox\Message\Http\Input\Message;
 use Chatbox\Message\MessageServiceInterface;
 
 /**
@@ -12,56 +13,41 @@ class MessageController
 {
     protected $message;
 
-    protected $request;
-
     public function __construct(
-        MessageServiceInterface $message,
-        MessageRequest $request
+        MessageServiceInterface $message
     ){
-        $this->request = $request;
         $this->message = $message;
     }
 
     public function get($id)
     {
         $message = $this->message->find($id);
-
         return [
             "message" => $message
         ];
     }
 
-    public function search(){
-        $conj = $this->request->getConjection();
-        $page = $this->request->getPager();
-        $conj["pager"] = $page;
-        $messages = $this->message->fetch($conj);
-
+    public function write(Message $message){
+        $message = $this->message->write((array)$message);
         return [
-            "messages" => $messages,
-            "pager" => $page
+            "message" => $message
         ];
     }
 
-    public function write(){
-        $message = $this->request->getMessage();
-        $message = $this->message->write($message);
+    public function rewrite($uid,Message $message){
+        $this->message->rewrite($uid,(array)$message);
         return [
-            "uid" => $message->getUid()
+            "message" => $message
         ];
-    }
-
-    public function rewrite($uid){
-        $message = $this->request->getMessage();
-        $this->message->rewrite($uid,$message);
-        return [];
     }
 
     public function delete($uid){
         $this->message->remove([
             "id" => $uid
         ]);
-        return [];
+        return [
+            "uid" => $uid
+        ];
     }
 
 }

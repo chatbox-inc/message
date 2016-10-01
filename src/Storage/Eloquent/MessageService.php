@@ -21,7 +21,7 @@ class MessageService extends Model implements MessageServiceInterface, MessageIn
 
     protected $table = "cb_message";
 
-    protected $fillable = ["code","from","to","body"];
+    protected $fillable = ["code","from","to","body","subject"];
 
     public function getUid()
     {
@@ -38,13 +38,6 @@ class MessageService extends Model implements MessageServiceInterface, MessageIn
         }
     }
 
-    public function fetch(array &$conj):array
-    {
-        $conj = array_intersect_key($conj,array_flip(["from","to","body"]));
-
-        return $this->where($conj)->take(30)->get()->all();
-    }
-
     public function write(array $message = []):MessageInterface
     {
         $message["code"] = sha1(mt_rand());
@@ -56,33 +49,27 @@ class MessageService extends Model implements MessageServiceInterface, MessageIn
     public function rewrite($_uid, array $message)
     {
         $message["body"] = json_encode($message["body"]);
-        $message = $this->validate($message);
-        $message = $this->find($_uid);
-        if($message){
-            $message->update($message);
-            return true;
-        }else{
-            return false;
-        }
+        $message["code"] = $_uid;
+
+        $loaded = $this->find($_uid);
+        $loaded->fill($message);
+        $this->validate($loaded->toArray());
+        $loaded->update();
+        return $loaded;
     }
 
-    public function remove(array $conj)
+    public function remove($uid)
     {
-        $message = $this->find(array_get($conj,"id"));
-        if($message){
-            $message->delete();
-            return true;
-        }else{
-            return false;
-        }
+        $this->where("code",$uid)->delete();
     }
 
     protected function validate(array $message){
         $rules = [
-            "code" => ["required","string"],
-            "from" => ["required","string"],
-            "to" => ["required","string"],
+            "code" => ["required","string","max:255","alpha_num"],
+            "from" => ["required","string","max:255"],
+            "to" => ["required","string","max:255"],
             "body" => ["required","string"],
+            "subject" => ["required","string","max:255"],
         ];
         /** @var Factory $validator */
         $validator = app("validator");

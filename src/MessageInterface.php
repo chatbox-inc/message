@@ -9,11 +9,10 @@
 namespace Chatbox\Message;
 
 /**
- * タイプヒントの兼ね合いもあって多分何も実装しない。
+ * タイプヒントの兼ね合いで用意。
+ * 特にドメインロジックはないので何も実装しない
  * @package Chatbox\Message
  */
 interface MessageInterface
 {
-    public function getUid();
-
 }
