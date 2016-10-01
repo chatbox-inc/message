@@ -2,7 +2,7 @@
 describe('MessageInterface', function() {
 
     /** @var \Chatbox\Message\MessageServiceInterface $service */
-    $service = new \Chatbox\RestApp\Message1();
+    $service = new \Chatbox\Message\Storage\Eloquent\MessageService();
 
     function is_same_message(\Chatbox\Message\MessageInterface $message1,array $message2){
         assert($message1->from === $message2["from"]);
