@@ -30,7 +30,6 @@
     },
     "require-dev": {
         "laravel/lumen": "^5.2",
-        "peridot-php/peridot": "^1.18",
-        "chatbox-inc/peridot-lumen-plugin": "^1.0"
+        "peridot-php/peridot": "^1.18"
     }
 }
