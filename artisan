@@ -3,7 +3,9 @@
 
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Output\ConsoleOutput;
-
+use Laravel\Lumen\Application;
+use Laravel\Lumen\Console\Kernel;
+use Illuminate\Console\Scheduling\Schedule;
 /*
 |--------------------------------------------------------------------------
 | Create The Application
@@ -29,8 +31,8 @@ $app = require __DIR__.'/backend/bootstrap.php';
 */
 $app->singleton(
     \Illuminate\Contracts\Console\Kernel::class,
-    function(){
-        return new class($this->app) extends Kernel{
+    function()use($app){
+        return new class($app) extends Kernel{
            /**
             * The Artisan commands provided by your application.
             *
@@ -51,15 +53,6 @@ $app->singleton(
         };
     }
 );
-
-
-
-$app->extend(\Illuminate\Contracts\Console\Kernel::class,function($console){
-    $console->addCommands([
-        // your commands here
-    ]);
-    return $console;
-});
 
 $kernel = $app->make(
     'Illuminate\Contracts\Console\Kernel'
