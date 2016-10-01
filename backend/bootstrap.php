@@ -17,7 +17,7 @@ $app->withFacades();
 $app->withEloquent();
 
 $app->singleton(\Illuminate\Contracts\Debug\ExceptionHandler::class,function(){
-    $handler = new \Chatbox\Lumen\Exceptions\Handler();
+    $handler = new \Laravel\Lumen\Exceptions\Handler();
     // set your Reporters;
     return $handler;
 });
