@@ -2,13 +2,20 @@
 # Be aware that YAML has indentation based scoping.
 # Code completion support is available so start typing for available options.
 swagger: '2.0'
-
 # This is your document metadata
 info:
   version: "0.0.1"
-  title: メッセージ発行API
-
-
+  title: Message API
+  description: Message API
+host: localhost:8000
+# array of all schemes that your API supports
+schemes:
+  - http
+# will be prefixed to all paths
+basePath: /
+produces:
+  - "application/json; charset=utf-8"
+  - application/json
 parameters:
   uid:
     name: uid
@@ -16,37 +23,35 @@ parameters:
     description: メッセージID
     type: string
     required: true
+  message:
+    name: message
+    in: body
+    description: メッセージID
+    type: object
+    required: true
+    properties:
+      message:
+        type: object
+        properties:
+          from:
+            type: string
+          to:
+            type: string
+          subject:
+            type: string
+          body:
+            type: object
 
 # Describe your paths here
 paths:
   /message:
-    get:
-      description: メッセージを検索します。
-      parameters:
-        -
-          name: conj
-          in: query
-          description: 検索条件
-          type: string
-          required: true
-      responses:
-        200:
-          description: Successful response
-          schema:
-            title: Result
-            type: object
-            properties:
-              message:
-                $ref: '#/definitions/Message'
     post:
       description: メッセージを投稿します。
+      operationId: postMessage
+      tags:
+       - message
       parameters:
-        -
-          name: message
-          in: query
-          description: メッセージボディ
-          type: string
-          required: true
+        - $ref: '#/parameters/message'
       responses:
         200:
           description: Successful response
@@ -60,6 +65,9 @@ paths:
   /message/{uid}:
     get:
       description: メッセージを取得します。
+      operationId: getMessage
+      tags:
+       - message
       parameters:
         - $ref: '#/parameters/uid'
       responses:
@@ -73,8 +81,12 @@ paths:
                 $ref: '#/definitions/Message'
     put:
       description: メッセージを更新します。
+      operationId: putMessage
+      tags:
+       - message
       parameters:
         - $ref: '#/parameters/uid'
+        - $ref: '#/parameters/message'
       responses:
         200:
           description: Successful response
@@ -86,6 +98,9 @@ paths:
                 $ref: '#/definitions/Message'
     delete:
       description: メッセージを削除します。
+      operationId: deleteMessage
+      tags:
+       - message
       parameters:
         - $ref: '#/parameters/uid'
       responses:
@@ -96,8 +111,10 @@ paths:
             type: object
             properties:
               message:
-                $ref: '#/definitions/Message'
+                $ref: '#/definitions/Uid'
 definitions:
+  Uid:
+    type: string
   Message:
     type: object
     properties:
