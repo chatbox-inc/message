@@ -33,7 +33,7 @@ describe('ArrayObject', function() {
         $spec->assertResponseHasNotFoundException();
     });
 
-    xit('fail with invalid message', function() {
+    it('fail with invalid message', function() {
         $spec = new \Chatbox\Message\Spec\HttpSpec($this->lumen);
 
         $okMessage = [
