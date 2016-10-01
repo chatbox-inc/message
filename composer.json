@@ -26,7 +26,6 @@
         "post-create-project-cmd": []
     },
     "require": {
-        "chatbox-inc/lumen-providers": "dev-master"
     },
     "require-dev": {
         "laravel/lumen": "^5.2",
